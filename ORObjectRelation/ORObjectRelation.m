@@ -296,7 +296,7 @@ NSString * const ORObjectRelationObserverNamePrefix = @"com.objectRelation.obser
     return [subRelation _appendObserverNamed:[ORObjectRelationObserverNamePrefix stringByAppendingString:[subRelation name]] queue:[subRelation queue] picker:^(id relation, id value) {
         __strong typeof(weak_self) self = weak_self;
         [self _updateValue];
-    } error:error];
+    } error:error] != nil;
 }
 
 - (void)_appendSubRelation:(ORObjectRelation *)subRelation{

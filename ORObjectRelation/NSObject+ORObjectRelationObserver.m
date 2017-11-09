@@ -44,17 +44,17 @@ NSString * ORObjectRelationObserverName(id observer){
 
 @interface NSObject (ORObjectRelationObserverSetter)
 
-@property (nonatomic, strong, readonly) ORObjectRelationObserverSetter *syncObjectRelationObserverSetter;
+@property (nonatomic, strong, readonly) ORObjectRelationObserverSetter *objectRelationObserverSetter;
 
 @end
 
 @implementation NSObject (ORObjectRelationObserverSetter)
 
-- (ORObjectRelationObserverSetter *)syncObjectRelationObserverSetter{
-    ORObjectRelationObserverSetter *setter = objc_getAssociatedObject(self, @selector(syncObjectRelationObserverSetter));
+- (ORObjectRelationObserverSetter *)objectRelationObserverSetter{
+    ORObjectRelationObserverSetter *setter = objc_getAssociatedObject(self, @selector(objectRelationObserverSetter));
     if (!setter) {
         setter = [ORObjectRelationObserverSetter new];
-        objc_setAssociatedObject(self, @selector(syncObjectRelationObserverSetter), setter, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        objc_setAssociatedObject(self, @selector(objectRelationObserverSetter), setter, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
     return setter;
 }
@@ -71,14 +71,14 @@ NSString * ORObjectRelationObserverName(id observer){
     NSString *observerName = ORObjectRelationObserverName(self);
     BOOL success = [relation registerObserverNamed:observerName queue:queue picker:picker error:error];
     if (success) {
-        self.syncObjectRelationObserverSetter.observerName = ORObjectRelationObserverName(self);
-        [[[self syncObjectRelationObserverSetter] observedObjectRelations] addObject:relation];
+        self.objectRelationObserverSetter.observerName = ORObjectRelationObserverName(self);
+        [[[self objectRelationObserverSetter] observedObjectRelations] addObject:relation];
     }
     return success;
 }
 
 - (void)removeAllObservers;{
-    [[self syncObjectRelationObserverSetter] clear];
+    [[self objectRelationObserverSetter] clear];
 }
 
 @end
