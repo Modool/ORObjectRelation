@@ -269,7 +269,7 @@ NSString * const ORObjectRelationObserverNamePrefix = @"com.objectRelation.obser
     if (!observer) {
         observer = [self _appendObserverNamed:name queue:queue picker:picker];
     } else if (error){
-        *error = [NSError errorWi/Volumes/Mac_Data/repositories/ORObjectRelation/ORObjectRelation/ORObjectRelation.mthDomain:ORObjectRelationErrorDomain code:0 userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"Exist observer named: %@.", name]}];
+        *error = [NSError errorWithDomain:ORObjectRelationErrorDomain code:0 userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"Exist observer named: %@.", name]}];
     }
     return observer;
 }
