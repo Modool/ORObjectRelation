@@ -87,7 +87,7 @@ NSString * const ORObjectRelationObserverNamePrefix = @"com.objectRelation.obser
         self.equalValue = ^BOOL(id objectRelation, id value, id replacement) {
             return [value isEqual:replacement];
         };
-        dispatch_queue_set_specific(queue, _queueTag, _queueTag, NULL);
+        dispatch_queue_set_specific(_queue, _queueTag, _queueTag, NULL);
     }
     return self;
 }
